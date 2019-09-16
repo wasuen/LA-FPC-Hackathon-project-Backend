@@ -8,8 +8,9 @@ const dataSchema = new mongoose.Schema({
   change: String,
   notes: String,
   dataStatus: String,
+  group: String
 })
 
-const Data = mongoose.model('Data', dataSchema)
+const Data = mongoose.model('Data', authSchema)
 
 module.exports = Data;

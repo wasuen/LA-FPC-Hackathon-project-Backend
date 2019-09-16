@@ -7,6 +7,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3030
 
+const adminRoute = require('./controller/admin.js')
+
 
 require('dotenv').config()
 require('./db/db');
@@ -27,6 +29,8 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+
+app.use('/admin', adminRoute)
 
 app.get('/', (req, res) => {
   res.send("welcome")
