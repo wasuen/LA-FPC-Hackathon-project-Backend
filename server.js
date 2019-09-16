@@ -5,6 +5,9 @@ const cors = require('cors');
 
 const app = express();
 
+require('./db/db');
+
+
 const PORT = process.env.PORT || 3030
 
 app.listen(PORT, (err) => {
