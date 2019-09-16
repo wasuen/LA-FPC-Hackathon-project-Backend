@@ -10,6 +10,6 @@ const dataSchema = new mongoose.Schema({
   dataStatus: String,
 })
 
-const Data = mongoose.model('Data', authSchema)
+const Data = mongoose.model('Data', dataSchema)
 
 module.exports = Data;
