@@ -27,6 +27,7 @@ router.post('/register-admin', async (req, res) =>{
 //login register route
 
 router.post('/login-admin', async (req,res)=>{
+    console.log(req.body, '<-----hitting')
     try{
         const foundAdmin = await Admin.findOne({
             username: req.body.username
