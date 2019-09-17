@@ -1,22 +1,21 @@
 const express = require('express')
 const router = express.Router()
-const Admin    = require('../models/admins')
+const Admin    = require('../models/admin')
+
 const bcrypt  = require('bcryptjs')
 
 //admin register route
 
 router.post('/register-admin', async (req, res) =>{
-    
     const password = req.body.password;
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     req.body.password = hashedPassword;
-    console.log('hitting')
+
     try{
         const createdAdmin = await Admin.create(req.body);
         req.sessions.adminId = createdAdmin._id;
         req.session.username = createdAdmin.username;
         req.session.logged = true;
-        
         res.json({
             data: createdAdmin
         })
