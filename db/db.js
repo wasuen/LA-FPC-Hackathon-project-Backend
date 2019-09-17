@@ -6,7 +6,9 @@ const connectionString = 'mongodb://localhost/foodData';
 mongoose.connect(connectionString, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useUnifiedTopology: true
+
   });
 
 mongoose.connection.on('connected', () => {
