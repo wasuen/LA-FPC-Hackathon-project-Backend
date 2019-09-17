@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
   indicator: String,
-  baseline:  { year: String, metric: String },
-  update:  [{ year: String, metric: String }],
+  baseline:  String,
+  update:   [ String ],
   sources: String,
   change: String,
   notes: String,
@@ -11,6 +11,6 @@ const dataSchema = new mongoose.Schema({
   group: String
 })
 
-const Data = mongoose.model('Data', authSchema)
+const Data = mongoose.model('Data', dataSchema)
 
 module.exports = Data;

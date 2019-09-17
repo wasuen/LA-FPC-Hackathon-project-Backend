@@ -8,6 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3030
 
 const adminRouter = require('./controller/admin.js')
+const dataRouter = require('./controller/data.js')
 
 
 require('dotenv').config()
@@ -30,7 +31,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use('/admin', adminRouter)
+app.use('/admin', adminRouter);
+app.use('/data', dataRouter);
 
 app.get('/', (req, res) => {
   res.send("welcome")
