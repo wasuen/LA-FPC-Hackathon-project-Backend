@@ -50,7 +50,7 @@ router.put('/:id/update-data', async (req,res) =>{
 //delete data 
 router.delete('/:id', async(req, res)=>{
     try{
-        Data.findByIdAndDelete(req.params.id)
+        await Data.findByIdAndRemove(req.params.id)
         res.json({
             status:{
                 code: 200,
