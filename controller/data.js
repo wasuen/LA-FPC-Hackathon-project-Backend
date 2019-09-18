@@ -21,39 +21,6 @@ router.post('/add-data', async (req,res) =>{
 })
 
 
-//update data 
-
-// router.put('/:id/update-data', async(req,res)=>{
-//     try{
-
-//     }catch(err){
-//         res.send(err)
-//     }
-// })
-
-
-// const foundUser = await User.findById(req.params.id)
-//     if(!req.body.password === foundUser.password) {
-//         const password = req.body.password;
-//         const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-//         req.body.password = hashedPassword;
-//     }
-//     try{
-//         const updateUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
-//         req.session.userId = updateUser._id;
-//         req.session.username = updateUser.username;
-//         req.session.logged = true;
-//         res.json({
-//             status:{
-//                 "code": 200,
-//                 "message": true
-//             },
-//             data: updateUser
-//         })
-//     }catch(err){
-//         res.send(err)
-//     }
-
 //get data 
 router.get('/:id/get-data', async (req,res)=>{
     try{
@@ -65,4 +32,36 @@ router.get('/:id/get-data', async (req,res)=>{
         console.log(err)
     }
 })
+
+//update data 
+router.put('/:id/update-data', async (req,res) =>{
+    try{
+        const updateData = await Data.findByIdAndUpdate(req.params.id, req.body, {new: true})
+        res.json({
+            status:{
+                "code": 200,
+                "message": true
+            },
+            data: updateData
+        })
+    }catch(err){
+        console.log(err)
+    }
+})
+
+//delete data 
+router.delete('/:id', async(req, res)=>{
+    try{
+        Data.findByIdAndDelete(req.params.id)
+        res.json({
+            status:{
+                code: 200,
+                message: true
+            }
+        })
+    }catch(err){
+        console.log(err)
+    }
+})
+
 module.exports = router;
