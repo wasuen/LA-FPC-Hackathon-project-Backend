@@ -4,9 +4,7 @@ const Data    = require('../models/data')
 
 // add data
 router.post('/add-data', async (req,res) =>{
-    console.log(req.body)
     try{
-        console.log(req.body)
         const addData = await Data.create(req.body);
         res.json({
             status:{
