@@ -22,9 +22,9 @@ router.post('/add-data', async (req,res) =>{
 
 
 //get data 
-router.get('/:id/get-data', async (req,res)=>{
+router.get('/get-data', async (req,res)=>{
     try{
-        const foundData = await Data.findById(req.params.id)
+        const foundData = await Data.find({})
         res.json({
             data: foundData
         })
